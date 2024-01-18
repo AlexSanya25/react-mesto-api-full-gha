@@ -1,0 +1,145 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/inter.css);
+@import url(./blocks/page/page.css);
+@import url(./blocks/root/root.css);
+@import url(./blocks/header/header.css);
+@import url(./blocks/header/__logo/header__logo.css);
+@import url(./blocks/profile/profile.css);
+@import url(./blocks/profile/__avatar/profile__avatar.css);
+@import url(./blocks/profile/__avatar-hover/profile__avatar-hover.css);
+@import url(./blocks/profile/__info/profile__info.css);
+@import url(./blocks/profile/__title/profile__title.css);
+@import url(./blocks/profile/__subtitle/profile__subtitle.css);
+@import url(./blocks/profile/__editbutton/profile__editbutton.css);
+@import url(./blocks/profile/__editbutton-image/profile__editbutton-image.css);
+@import url(./blocks/profile/__addbutton/profile__addbutton.css);
+@import url(./blocks/elements/elements.css);
+@import url(./blocks/element/element.css);
+@import url(./blocks/element/__image/element__image.css);
+@import url(./blocks/element/__container/element__container.css);
+@import url(./blocks/element/__title/element__title.css);
+@import url(./blocks/element/element__delete/element__delete.css);
+@import url(./blocks/element/__like/element__like.css);
+@import url(./blocks/element/__like/_active/element__like_active.css);
+@import url(./blocks/element/__like-text/element__like-text.css);
+@import url(./blocks/element/__like-container/element__like-container.css);
+@import url(./blocks/footer/footer.css);
+@import url(./blocks/footer/__copyright/footer__copyright.css);
+@import url(./blocks/popup/popup.css);
+@import url(./blocks/popup/_opened/popup_opened.css);
+@import url(./blocks/popup/__container/popup__container.css);
+@import url(./blocks/popup/__container/_delete/popup__container_delete.css);
+@import url(./blocks/popup/__close/popup__close.css);
+@import url(./blocks/popup/__close-image/popup__close-image.css);
+@import url(./blocks/popup/__form/popup__form.css);
+@import url(./blocks/popup/__form-title/popup__form-title.css);
+@import url(./blocks/popup/__form-title/_delete/popup__form-title_delete.css);
+@import url(./blocks/popup/__input-container/popup__input-container.css);
+@import url(./blocks/popup/__input-item/popup__input-item.css);
+@import url(./blocks/popup/__input-item/_error/popup__input-item_error.css);
+@import url(./blocks/popup/__save/popup__save.css);
+@import url(./blocks/popup/__save/_disabled/popup__save_disabled.css);
+@import url(./blocks/popup/__save/_delete/popup__save_delete.css);
+@import url(./blocks/popup/__save/_avatar/popup__save_avatar.css);
+@import url(./blocks/popup/__photo-container/popup__photo-container.css);
+@import url(./blocks/popup/__photo-image/popup__photo-image.css);
+@import url(./blocks/popup/__photo-text/popup__photo-text.css);
+@import url(./blocks/popup/__error/popup__error.css);
+@import url(./blocks/popup/_photo/popup_photo.css);
+
+.header__navigate {
+  color: #fff;
+  text-align: right;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  text-decoration: none;
+  margin: 0;
+  margin-top: 6px;
+}
+
+.register {
+  max-width: 358px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 80px;
+}
+
+.register__form-title {
+  color: #fff;
+  text-align: center;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.register__input-item {
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 11px;
+  margin-bottom: 5px;
+  background-color: #000;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.register__input-item:nth-of-type(2) {
+    margin-bottom: 0;
+}
+
+
+.register__button {
+  color: #000;
+  background: #fff;
+  border: 0;
+  text-align: center;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 0;
+  border-radius: 2px;
+  width: 100%;
+  min-height: 50px;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 216px;
+}
+
+.register__form {
+  margin-top: 50px;
+}
+
+
+.register__navigate {
+    margin: 0;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.register__navigate-text {
+  color: #fff;
+  text-align: center;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+  
+  
+  
+}

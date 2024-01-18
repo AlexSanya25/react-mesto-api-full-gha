@@ -1,0 +1,18 @@
+.popup__form-title {
+    color: #000;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 29px;
+    margin: 0;
+    margin-bottom: 54px;
+}
+
+@media screen and (max-width: 680px) {
+    .popup__form-title {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 75px;
+    }
+}
