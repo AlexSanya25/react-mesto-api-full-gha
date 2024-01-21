@@ -59,7 +59,7 @@ const deleteCard = async (req, res, next) => {
 const createCard = async (req, res, next) => {
   try {
     const { name, link } = req.body;
-    const owner = req.user;
+    const owner = req.user._id;
     const newCard = await Card.create({ name, link, owner });
     return res.status(HttpCodesCards.create).send(newCard);
   } catch (error) {
