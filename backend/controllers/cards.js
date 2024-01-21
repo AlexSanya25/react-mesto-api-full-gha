@@ -14,7 +14,7 @@ const HttpCodesCards = require('../utils/constants.js');
 // eslint-disable-next-line consistent-return
 async function getCards(req, res, next) {
   try {
-    const cards = await Card.find();
+    const cards = await Card.find({});
     return res.send(cards);
   } catch (error) {
     next(error);
@@ -59,7 +59,7 @@ const deleteCard = async (req, res, next) => {
 const createCard = async (req, res, next) => {
   try {
     const { name, link } = req.body;
-    const owner = req.user._id;
+    const owner = req.user;
     const newCard = await Card.create({ name, link, owner });
     return res.status(HttpCodesCards.create).send(newCard);
   } catch (error) {
