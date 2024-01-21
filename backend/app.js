@@ -12,6 +12,8 @@ const NotFoundError = require('./utils/NotFoundError.js');
 const error = require('./utils/error.js');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+// eslint-disable-next-line import/extensions
+const cors = require('./middlewares/cors.js');
 
 const { PORT = 3000 } = process.env;
 
@@ -28,6 +30,8 @@ app.get('/crash-test', () => {
 });
 
 app.use(requestLogger);
+
+app.use(cors);
 
 app.use(router);
 

@@ -95,7 +95,7 @@ export class Api {
 }
 
 const apiOptions = {
-  url: "https://api.alexsanya.nomoredomainsmonster.ru/",
+  url: "https://api.alexsanya.nomoredomainsmonster.ru",
   headers: {
     authorization: "83550a40-cebd-4081-b67b-cdf7223e3f37",
     "Content-Type": "application/json",
