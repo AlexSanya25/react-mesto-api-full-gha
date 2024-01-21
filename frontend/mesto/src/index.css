@@ -4,6 +4,10 @@
 @import url(./blocks/root/root.css);
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
+@import url(./blocks/header/__navigate/header__navigate.css);
+@import url(./blocks/header/__email/header__email.css);
+@import url(./blocks/header/__leave/header__leave.css);
+@import url(./blocks/header/__user/header__user.css);
 @import url(./blocks/profile/profile.css);
 @import url(./blocks/profile/__avatar/profile__avatar.css);
 @import url(./blocks/profile/__avatar-hover/profile__avatar-hover.css);
@@ -46,100 +50,20 @@
 @import url(./blocks/popup/__photo-text/popup__photo-text.css);
 @import url(./blocks/popup/__error/popup__error.css);
 @import url(./blocks/popup/_photo/popup_photo.css);
-
-.header__navigate {
-  color: #fff;
-  text-align: right;
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 22px;
-  text-decoration: none;
-  margin: 0;
-  margin-top: 6px;
-}
-
-.register {
-  max-width: 358px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 80px;
-}
-
-.register__form-title {
-  color: #fff;
-  text-align: center;
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 900;
-  line-height: normal;
-}
-
-.register__input-item {
-  width: 100%;
-  border: 0;
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 11px;
-  margin-bottom: 5px;
-  background-color: #000;
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 17px;
-  margin: 0;
-  margin-bottom: 30px;
-}
-
-.register__input-item:nth-of-type(2) {
-    margin-bottom: 0;
-}
+@import url(./blocks/popup/__tooltip-title/popup__tooltip-title.css);
+@import url(./blocks/popup/__container-tooltip/popup__container-tooltip.css);
+@import url(./blocks/popup/__tooltip-image/popup__tooltip-image.css);
+@import url(./blocks/register/register.css);
+@import url(./blocks/register/__form-title/register__form-title.css);
+@import url(./blocks/register/__input-item/register__input-item.css);
+@import url(./blocks/register/__button/register__button.css);
+@import url(./blocks/register/__form/register__form.css);
+@import url(./blocks/register/__navigate/register__navigate.css);
+@import url(./blocks/register/__navigate-text/register__navigate-text.css);
 
 
-.register__button {
-  color: #000;
-  background: #fff;
-  border: 0;
-  text-align: center;
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 22px;
-  margin: 0;
-  border-radius: 2px;
-  width: 100%;
-  min-height: 50px;
-  cursor: pointer;
-  padding: 0;
-  margin-top: 216px;
-}
-
-.register__form {
-  margin-top: 50px;
-}
 
 
-.register__navigate {
-    margin: 0;
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-}
 
-.register__navigate-text {
-  color: #fff;
-  text-align: center;
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-decoration: none;
-  
-  
-  
-}
+
+

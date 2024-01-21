@@ -12,11 +12,12 @@ import Login from "./Login.js";
 import Register from "./Register.js";
 import ProtectedRoute from "./ProtectedRoute.js";
 
-
 import { api } from "../utils/Api.js";
+import * as Auth from "../utils/Auth.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import InfoTooltip from "./InfoTooltip.js";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
@@ -45,11 +46,17 @@ function App() {
     setSelectedCard(card);
   }
 
+  const [isInfoToolTipOpen, setIsInfoToolTipOpen] = React.useState(false);
+
+  const [isSuccessError, setIsSuccessError] = React.useState(false);
+
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setSelectedCard({});
+    setIsInfoToolTipOpen(false);
+    console.log("gvsg");
   }
 
   const [currentUser, setCurrentUser] = React.useState("");
@@ -142,21 +149,71 @@ function App() {
       });
   }
 
-
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const [email, setEmail] = React.useState();
 
-  function handleLogin() {
-    setLoggedIn(false)
-  }
+  const navigate = useNavigate();
 
+  const handleRegister = ({ email, password }) => {
+    return Auth.register(email, password)
+      .then(() => {
+        setIsInfoToolTipOpen(true);
+        setIsSuccessError(true);
+        navigate("/", { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsInfoToolTipOpen(true);
+        setIsSuccessError(false);
+      });
+  };
 
+  const handleLogin = ({ email, password }) => {
+    return Auth.authorize(email, password)
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("token", res.token);
+          setLoggedIn(true);
+          navigate("/", { replace: true });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsInfoToolTipOpen(true);
+        setIsSuccessError(false);
+      });
+  };
 
+  const authorization = (jwt) => {
+    if (jwt) {
+      Auth.getContent(jwt)
+        .then((res) => {
+          navigate("/");
+          setEmail(res.data.email);
+          setLoggedIn(true);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
+  React.useEffect(() => {
+    const jwt = localStorage.getItem("token");
+    authorization(jwt);
+  }, []);
+
+  const onSignOut = () => {
+    localStorage.removeItem("token");
+    navigate("/signin");
+    setLoggedIn(false);
+  };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <div className="root">
-          <Header loggedIn={loggedIn} />
+          <Header loggedIn={loggedIn} userEmail={email} onSignOut={onSignOut} />
           <Routes>
             <Route
               path="/"
@@ -170,12 +227,16 @@ function App() {
                   onCardLike={handleCardLike}
                   onCardDelete={handleCardDelete}
                   cards={cards}
+                  loggedIn={loggedIn}
                 />
               }
             />
-            <Route path='/sign-in' element={<Login onLogin={handleLogin} />} />
-            <Route path='/sign-up' element={<Register />} />
-            <Route path='*' element={<Navigate  to='/sign-in' replace />} />
+            <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
+            <Route
+              path="/sign-up"
+              element={<Register onRegister={handleRegister} />}
+            />
+            <Route path="*" element={<Navigate to="/sign-in" replace />} />
           </Routes>
           <Footer />
 
@@ -200,6 +261,11 @@ function App() {
           />
 
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+          <InfoTooltip
+            isOpen={isInfoToolTipOpen}
+            onClose={closeAllPopups}
+            isSuccessError={isSuccessError}
+          />
         </div>
       </div>
     </CurrentUserContext.Provider>

@@ -31,7 +31,7 @@ app.use(router);
 
 app.use(errors());
 
-app.use('*', (err) => {
+app.use('*', () => {
   throw new NotFoundError('Такой страницы не существует');
 });
 
