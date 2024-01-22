@@ -94,6 +94,7 @@ export class Api {
   }
 }
 const token = localStorage.getItem('jwt');
+console.log(token);
 const apiOptions = {
   url: "https://api.alexsanya.nomoredomainsmonster.ru",
   headers: {

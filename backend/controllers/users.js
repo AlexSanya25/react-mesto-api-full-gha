@@ -60,10 +60,7 @@ const createUser = async (req, res, next) => {
     const hash = await bcrypt.hash(password, soltRounds);
     // eslint-disable-next-line no-dupe-keys
     const newUser = await User.create({ email, password: hash });
-    return res.status(HttpCodesCards.create).send({
-      // eslint-disable-next-line max-len
-      name: newUser.name, about: newUser.about, avatar: newUser.avatar, email: newUser.email, id: newUser._id,
-    });
+    return res.status(HttpCodesCards.create).send({ data: newUser });
   } catch (error) {
     if (error.code === HttpCodesCards.dublicate) {
       // eslint-disable-next-line no-undef
