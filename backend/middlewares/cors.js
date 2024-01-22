@@ -2,8 +2,6 @@
 const allowedCors = [
   'https://alexsanya.nomoredomainsmonster.ru',
   'http://alexsanya.nomoredomainsmonster.ru',
-  'http://api.alexsanya.nomoredomainsmonster.ru',
-  'https://api.alexsanya.nomoredomainsmonster.ru',
   'http://localhost:3000',
 ];
 
@@ -14,7 +12,7 @@ module.exports = (req, res, next) => {
   if (allowedCors.includes(origin)) {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
     res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Credentials', true);
   }
   const { method } = req; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
 
