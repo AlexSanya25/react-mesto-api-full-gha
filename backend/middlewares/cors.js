@@ -2,6 +2,8 @@
 const allowedCors = [
   'https://alexsanya.nomoredomainsmonster.ru',
   'http://alexsanya.nomoredomainsmonster.ru',
+  'http://api.alexsanya.nomoredomainsmonster.ru',
+  'https://api.alexsanya.nomoredomainsmonster.ru',
   'http://localhost:3000',
 ];
 
