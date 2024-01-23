@@ -1,6 +1,9 @@
 const jwt = require('jsonwebtoken');
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('dotenv').config();
 
-const generateToken = (payload) => jwt.sign(payload, 'dev_secret', {
+const { JWT_SECRET } = process.env;
+const generateToken = (payload) => jwt.sign(payload, JWT_SECRET, {
   expiresIn: 604800,
 });
 

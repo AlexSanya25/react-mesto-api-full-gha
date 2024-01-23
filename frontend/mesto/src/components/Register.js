@@ -32,7 +32,7 @@ function Register({ onRegister }) {
             onChange={({ target }) => setEmail(target.value)}
           />
           <input
-            type="text"
+            type="password"
             className="register__input-item"
             name="password"
             id="password"

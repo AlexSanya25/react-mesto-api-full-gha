@@ -2,6 +2,10 @@ const jwt = require('jsonwebtoken');
 
 // eslint-disable-next-line import/extensions
 const NotAuthorizate = require('../utils/NotAuthorizate.js');
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('dotenv').config();
+
+const { JWT_SECRET } = process.env;
 
 // eslint-disable-next-line func-names, consistent-return
 module.exports = function (req, res, next) {
@@ -13,7 +17,7 @@ module.exports = function (req, res, next) {
     }
     const validToken = token.replace('Bearer ', '');
     // eslint-disable-next-line no-unused-vars
-    payload = jwt.verify(validToken, 'dev_secret');
+    payload = jwt.verify(validToken, JWT_SECRET);
   } catch (error) {
     next(new NotAuthorizate('С токеном что-то не так'));
   }
