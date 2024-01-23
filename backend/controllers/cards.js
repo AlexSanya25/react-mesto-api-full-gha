@@ -79,7 +79,7 @@ const likeCard = async (req, res, next) => {
       req.params.cardId,
       { $addToSet: { likes: req.user._id } }, // добавить _id в массив, если его там нет
       { new: true },
-    ).populate('likes').orFail(
+    ).populate('likes', 'owner').orFail(
       () => new NotFoundError('Карточка по заданному ID не найдена'),
     );
     return res.status(HttpCodesCards.create).send(like);
@@ -106,7 +106,7 @@ const disLikeCard = async (req, res, next) => {
       req.params.cardId,
       { $pull: { likes: req.user._id } }, // добавить _id в массив, если его там нет
       { new: true },
-    ).populate('likes').orFail(
+    ).populate('likes', 'owner').orFail(
       () => new NotFoundError('Карточка по заданному ID не найдена'),
     );
     return res.status(HttpCodesCards.create).send(like);
