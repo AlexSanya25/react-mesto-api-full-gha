@@ -15,23 +15,35 @@ export class Api {
   }
 
   getUserInfoApi() {
+    const token = localStorage.getItem('token');
     return this._getResponseData(`${this._url}/users/me`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
     });
   }
 
   getAllCards() {
+    const token = localStorage.getItem('token');
     return this._getResponseData(`${this._url}/cards`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
     });
   }
 
   editProfile(data) {
+    const token = localStorage.getItem('token');
     return this._getResponseData(`${this._url}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         name: data.name,
         about: data.about,
@@ -40,9 +52,13 @@ export class Api {
   }
 
   createCardApi(data) {
+    const token = localStorage.getItem('token');
     return this._getResponseData(`${this._url}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         name: data.name,
         link: data.link,
@@ -64,43 +80,53 @@ export class Api {
     });
   }
 */
-  changeLikeCardStatus(data, isLiked) {
+  changeLikeCardStatus(cardId, isLiked) {
+    const token = localStorage.getItem('token');
     return isLiked
-      ? this._getResponseData(`${this._url}/cards/${data}/likes`, {
+      ? this._getResponseData(`${this._url}/cards/${cardId}/likes`, {
           method: "PUT",
-          headers: this._headers,
+          headers: {
+            authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
+          },
         })
-      : this._getResponseData(`${this._url}/cards/${data}/likes`, {
+      : this._getResponseData(`${this._url}/cards/${cardId}/likes`, {
           method: "DELETE",
-          headers: this._headers,
+          headers: {
+            authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
+          },
         });
   }
 
-  deleteCard(data) {
-    return this._getResponseData(`${this._url}/cards/${data}`, {
+  deleteCard(cardId) {
+    const token = localStorage.getItem('token');
+    return this._getResponseData(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
     });
   }
 
   editAvatar(data) {
+    const token = localStorage.getItem('token');
     return this._getResponseData(`${this._url}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         avatar: data.avatar,
       }),
     });
   }
 }
-const token = localStorage.getItem('jwt');
-console.log(token);
+
 const apiOptions = {
   url: "https://api.alexsanya.nomoredomainsmonster.ru",
-  headers: {
-    authorization: `Bearer ${token}`,
-    "Content-Type": "application/json",
-  },
 };
 
 export const api = new Api(apiOptions);

@@ -60,31 +60,36 @@ function App() {
   }
 
   const [currentUser, setCurrentUser] = React.useState("");
-
-  React.useEffect(() => {
-    api
-      .getUserInfoApi()
-      .then((data) => {
-        setCurrentUser(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  /*
+  React.useEffect((jwt) => {
+    if (jwt) {
+      api
+        .getUserInfoApi()
+        .then((data) => {
+          setCurrentUser(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, []);
-
+*/
   const [cards, setCards] = React.useState([]);
-
-  React.useEffect(() => {
-    api
-      .getAllCards()
-      .then((data) => {
-        setCards(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  /*
+  React.useEffect((token) => {
+    if (token) {
+      api
+        .getAllCards()
+        .then((data) => {
+          setCards(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  // eslint-disable-next-line no-use-before-define
   }, []);
-
+*/
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
 
@@ -183,25 +188,71 @@ function App() {
         setIsSuccessError(false);
       });
   };
-
+/*
   const authorization = (jwt) => {
     if (jwt) {
       Auth.getContent(jwt)
         .then((res) => {
           navigate("/");
-          setEmail(res.data.email);
+          setEmail(res.email);
           setLoggedIn(true);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      api
+        .getUserInfoApi()
+        .then((data) => {
+          setCurrentUser(data);
+          setLoggedIn(true)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      api
+        .getAllCards()
+        .then((data) => {
+          setCards(data);
+          setLoggedIn(true)
         })
         .catch((error) => {
           console.log(error);
         });
     }
   };
-
+*/
   React.useEffect(() => {
     const jwt = localStorage.getItem("token");
-    authorization(jwt);
-  }, []);
+    if (jwt) {
+      Auth.getContent(jwt)
+        .then((res) => {
+          navigate("/");
+          setEmail(res.email);
+          setLoggedIn(true);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      api
+        .getUserInfoApi()
+        .then((data) => {
+          setCurrentUser(data);
+          setLoggedIn(true)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      api
+        .getAllCards()
+        .then((data) => {
+          setCards(data);
+          setLoggedIn(true)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [loggedIn, navigate]);
 
   const onSignOut = () => {
     localStorage.removeItem("token");

@@ -24,7 +24,7 @@ async function getCards(req, res, next) {
 const deleteCard = async (req, res, next) => {
   try {
     const { cardId } = req.params;
-    await Card.findById(cardId).orFail(
+    await Card.findById(cardId).populate('owner').orFail(
       () => new NotFoundError('Карточка по заданному ID не найдена'),
     )
     // eslint-disable-next-line no-shadow, consistent-return
